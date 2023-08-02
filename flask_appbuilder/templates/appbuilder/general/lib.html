@@ -110,21 +110,21 @@
 {% if not page %} {% set page = 0 %} {% endif %}
 {% set pages = ((count / page_size)|round(0,'ceil')|int)%}
 {% if pages > 1 %}
-<div class="btn-group">
-    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+<div class="dropdown btn-group">
+    <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-toggle="dropdown">
     {{_('Page size')}}<span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" role="menu">
+    <div class="dropdown-menu" role="menu">
         {% for sel_page_size in range(25,125,25) %}
         {% if page*sel_page_size <= count %}
             {% if sel_page_size == page_size %}
-                <li class="active"><a href="{{sel_page_size | link_page_size(modelview_name) }}">{{sel_page_size}}</a></li>
+                <a class="dropdown-item active" href="{{sel_page_size | link_page_size(modelview_name) }}">{{sel_page_size}}</a>
             {% else %}
-                <li><a href="{{sel_page_size | link_page_size(modelview_name) }}">{{sel_page_size}}</a></li>
+                <a class="dropdown-item" href="{{sel_page_size | link_page_size(modelview_name) }}">{{sel_page_size}}</a>
             {% endif %}
         {% endif %}
         {% endfor %}
-    </ul>
+    </div>
 </div>
 {% endif %}
 {% endmacro %}
@@ -335,7 +335,7 @@
 {% endmacro %}
 
 {% macro btn_crud(can_show, can_edit, can_delete, pk, modelview_name, filters) %}
-    <div class="btn-group btn-group-sm" style="display: flex;">
+    <div class="btn-group btn-group-sm">
         {% if can_show %}
             {% set endpoint = modelview_name + '.show' %}
             {% set path = endpoint | safe_url_for(pk=pk) %}
@@ -369,7 +369,7 @@
 {% endmacro %}
 
 {% macro lnk_back() %}
-    <a href="{{url_for('UtilView' + '.back')}}" class="btn btn-light" data-toggle="tooltip" rel="tooltip"
+    <a href="{{url_for('UtilView' + '.back')}}" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" rel="tooltip"
        title="{{_('Back')}}">
         <span class="sr-only">{{ _('Back') }}</span>
         <i class="fa fa-arrow-left"></i>
@@ -378,31 +378,31 @@
 
 
 {% macro lnk_add(my_href) %}
-    <button href="{{my_href}}" class="btn btn-sm btn-primary" data-toggle="tooltip" rel="tooltip"
+    <a href="{{my_href}}" class="btn btn-sm btn-primary" data-toggle="tooltip" rel="tooltip"
        title="{{_('Add a new record')}}">
         <span class="sr-only">{{ _('Add') }}</span>
         <i class="fa fa-plus"></i>
-    </button>
+    </a>
 {% endmacro %}
 
 {% macro lnk_edit(my_href) %}
-    <button href="{{my_href}}" class="btn btn-light" data-toggle="tooltip" rel="tooltip"
+    <a href="{{my_href}}" class="btn btn-light" data-toggle="tooltip" rel="tooltip"
        title="{{_('Edit record')}}">
         <span class="sr-only">{{ _('Edit') }}</span>
         <i class="fa fa-edit"></i>
-    </button>
+    </a>
 {% endmacro %}
 
 {% macro lnk_show(my_href) %}
-    <button href="{{my_href}}" class="btn btn-light" data-toggle="tooltip" rel="tooltip"
+    <a href="{{my_href}}" class="btn btn-light" data-toggle="tooltip" rel="tooltip"
        title="{{_('Show record')}}">
         <span class="sr-only">{{ _('Show') }}</span>
         <i class="fa fa-search"></i>
-    </button>
+    </a>
 {% endmacro %}
 
 {% macro lnk_delete(my_href) %}
-    <button
+    <a
         id="btn-delete-{{ my_href }}"
         href="#"
         class="btn btn-light confirm"
@@ -411,7 +411,7 @@
     >
         <span class="sr-only">{{ _('Delete') }}</span>
         <i class="fa fa-trash"></i>
-    </button>
+    </a>
     <script nonce="{{ baselib.get_nonce() }}">
         document.getElementById("btn-delete-{{ my_href }}")
             .addEventListener("click", function () {
