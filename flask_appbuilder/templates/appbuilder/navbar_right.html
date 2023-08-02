@@ -5,22 +5,19 @@
     {% set locale = 'en' %}
 {% endif %}
 {% if languages.keys()|length > 1 %}
-<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-       <div class="f16"><i class="flag {{languages[locale].get('flag')}}"></i><b class="caret"></b>
-       </div>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle f16" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+       <i class="flag {{languages[locale].get('flag')}}"></i>
     </a>
-    <ul class="dropdown-menu">
-    <li class="dropdown">
+    <div class="dropdown-menu">
         {% for lang in languages %}
             {% if lang != locale %}
-                <a tabindex="-1" href="{{appbuilder.get_url_for_locale(lang)}}">
-                  <div class="f16"><i class="flag {{languages[lang].get('flag')}}"></i> - {{languages[lang].get('name')}}
-                </div></a>
+                <a class="dropdown-item f16" tabindex="-1" href="{{appbuilder.get_url_for_locale(lang)}}">
+                  <i class="flag {{languages[lang].get('flag')}}"></i> - {{languages[lang].get('name')}}
+                </a>
             {% endif %}
         {% endfor %}
-        </li>
-        </ul>
+        </div>
 </li>
 {% endif %}
 {% endmacro %}
@@ -29,16 +26,16 @@
 
 {{ locale_menu(languages) }}
 {% if not current_user.is_anonymous %}
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-           <span class="fa fa-user"></span> {{g.user.get_full_name()}}<b class="caret"></b>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+           <span class="fa fa-user"></span> {{g.user.get_full_name()}}
         </a>
-        <ul class="dropdown-menu">
-            <li><a href="{{appbuilder.get_url_for_userinfo}}"><span class="fa fa-fw fa-user"></span>{{_("Profile")}}</a></li>
-            <li><a href="{{appbuilder.get_url_for_logout}}"><span class="fa fa-fw fa-sign-out"></span>{{_("Logout")}}</a></li>
-        </ul>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{appbuilder.get_url_for_userinfo}}"><span class="fa fa-fw fa-user"></span>{{_("Profile")}}</a>
+            <a class="dropdown-item" href="{{appbuilder.get_url_for_logout}}"><span class="fa fa-fw fa-sign-out"></span>{{_("Logout")}}</a>
+        </div>
     </li>
 {% else %}
-    <li><a href="{{appbuilder.get_url_for_login}}">
+    <li class="nav-item"><a class="nav-link" href="{{appbuilder.get_url_for_login}}">
     <i class="fa fa-fw fa-sign-in"></i>{{_("Login")}}</a></li>
 {% endif %}
