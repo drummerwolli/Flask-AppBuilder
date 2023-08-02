@@ -58,7 +58,7 @@ var AdminFilters = function (element, labels, form, filters, active_filters) {
     function addRemoveFilter($el, name, label) {
         $el.append(
             $('<td />').append(
-                $('<a href="#" class="btn remove-filter" />')
+                $('<a href="#" class="btn btn-outline-primary remove-filter" />')
                     .append($('<span class="close-icon">&times;</span>'))
                     .append('&nbsp;')
                     .append(label)
