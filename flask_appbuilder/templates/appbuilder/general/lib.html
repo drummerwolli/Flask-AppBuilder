@@ -72,7 +72,7 @@
 {% macro render_actions(actions, modelview_name) %}
 {% if actions %}
 <div class="btn-group">
-    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
     {{_('Actions')}}<span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
@@ -111,7 +111,7 @@
 {% set pages = ((count / page_size)|round(0,'ceil')|int)%}
 {% if pages > 1 %}
 <div class="dropdown btn-group">
-    <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
     {{_('Page size')}}<span class="caret"></span>
     </button>
     <div class="dropdown-menu" role="menu">
@@ -131,7 +131,7 @@
 
 {% macro render_dropdown_orderby(order_columns, label_columns, modelview_name) %}
 <div class="btn-group">
-    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
     {{_('Order by')}}<span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">

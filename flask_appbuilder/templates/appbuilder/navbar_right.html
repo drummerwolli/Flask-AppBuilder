@@ -6,7 +6,7 @@
 {% endif %}
 {% if languages.keys()|length > 1 %}
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle f16" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle f16" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        <i class="flag {{languages[locale].get('flag')}}"></i>
     </a>
     <div class="dropdown-menu">
@@ -23,11 +23,58 @@
 {% endmacro %}
 
 
+{% macro theme_switch() %}
+    <li class="nav-item dropdown">
+        <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
+            <svg class="bi my-1 theme-icon-active">
+                <use xlink:href="{{url_for('appbuilder.static',filename='svg/bootstrap-icons.svg')}}#circle-half"></use>
+            </svg>
+            <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                    <svg class="bi me-2 opacity-50 theme-icon">
+                        <use xlink:href="{{url_for('appbuilder.static',filename='svg/bootstrap-icons.svg')}}#sun-fill"></use>
+                    </svg>
+                    Light
+                    <svg class="bi ms-auto d-none">
+                        <use xlink:href="{{url_for('appbuilder.static',filename='svg/bootstrap-icons.svg')}}#check2"></use>
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                    <svg class="bi me-2 opacity-50 theme-icon">
+                        <use xlink:href="{{url_for('appbuilder.static',filename='svg/bootstrap-icons.svg')}}#moon-stars-fill"></use>
+                    </svg>
+                    Dark
+                    <svg class="bi ms-auto d-none">
+                        <use xlink:href="{{url_for('appbuilder.static',filename='svg/bootstrap-icons.svg')}}#check2"></use>
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                    <svg class="bi me-2 opacity-50 theme-icon">
+                        <use xlink:href="{{url_for('appbuilder.static',filename='svg/bootstrap-icons.svg')}}#circle-half"></use>
+                    </svg>
+                    Auto
+                    <svg class="bi ms-auto d-none">
+                        <use xlink:href="{{url_for('appbuilder.static',filename='svg/bootstrap-icons.svg')}}#check2"></use>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </li>
 
+{% endmacro %}
+
+{{ theme_switch() }}
 {{ locale_menu(languages) }}
 {% if not current_user.is_anonymous %}
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            <span class="fa fa-user"></span> {{g.user.get_full_name()}}
         </a>
         <div class="dropdown-menu">
@@ -39,3 +86,4 @@
     <li class="nav-item"><a class="nav-link" href="{{appbuilder.get_url_for_login}}">
     <i class="fa fa-fw fa-sign-in"></i>{{_("Login")}}</a></li>
 {% endif %}
+
