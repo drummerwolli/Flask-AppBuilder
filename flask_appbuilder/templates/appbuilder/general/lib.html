@@ -291,7 +291,7 @@
 {% macro accordion_tag(id, label, open) %}
 <div class="card mb-4" id="{{id}}">
     <div class="card-header">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#{{id}}"
+            <a class="accordion-toggle dropdown-toggle" data-toggle="collapse" data-parent="#{{id}}"
                href="#{{id}}_href">{{label}}<span class="caret"></span></a>
     </div>
     {% if open %}
@@ -363,7 +363,7 @@
 {% endmacro %}
 
 {% macro btn_search() %}
-    <button type="submit" class="btn  btn-sm btn-primary">{{_("Search")}}
+    <button type="submit" class="btn btn-sm btn-primary">{{_("Search")}}
         <i class="fa fa-search"></i>
     </button>
 {% endmacro %}
