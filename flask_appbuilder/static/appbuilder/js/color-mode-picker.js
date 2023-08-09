@@ -26,7 +26,6 @@
       document.documentElement.setAttribute('data-bs-theme', theme)
     }
   }
-  console.log(getPreferredTheme());
   setTheme(getPreferredTheme())
 
   const showActiveTheme = (theme, focus = false) => {

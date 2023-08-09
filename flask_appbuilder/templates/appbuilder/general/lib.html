@@ -276,10 +276,10 @@
 {% endmacro %}
 
 {% macro panel_begin(title, extra_class="") %}
-<div class="card {{ extra_class }}">
-    <div class="card-header">
+<div class="{{ extra_class }}">
+    <h1>
       {{title}}
-    </div>
+    </h1>
   <div class="card-body">
 {% endmacro %}
 {% macro panel_end() %}
@@ -327,7 +327,7 @@
             {% endif %}
             {{ render_actions(actions, modelview_name) }}
             {{ lnk_back() }}
-            <div class="float-right">
+            <div class="float-end">
                 <strong>{{ _('Record Count') }}:</strong> {{ count }}
             </div>
         </div>
@@ -378,7 +378,7 @@
 
 
 {% macro lnk_add(my_href) %}
-    <a href="{{my_href}}" class="btn btn-sm btn-primary" data-toggle="tooltip" rel="tooltip"
+    <a href="{{my_href}}" type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" rel="tooltip"
        title="{{_('Add a new record')}}">
         <span class="sr-only">{{ _('Add') }}</span>
         <i class="fa fa-plus"></i>
@@ -386,7 +386,7 @@
 {% endmacro %}
 
 {% macro lnk_edit(my_href) %}
-    <a href="{{my_href}}" class="btn btn-light" data-toggle="tooltip" rel="tooltip"
+    <a href="{{my_href}}" type="button" class="btn btn-secondary-outline" data-toggle="tooltip" rel="tooltip"
        title="{{_('Edit record')}}">
         <span class="sr-only">{{ _('Edit') }}</span>
         <i class="fa fa-edit"></i>
@@ -394,7 +394,7 @@
 {% endmacro %}
 
 {% macro lnk_show(my_href) %}
-    <a href="{{my_href}}" class="btn btn-light" data-toggle="tooltip" rel="tooltip"
+    <a href="{{my_href}}" type="button" class="btn btn-secondary-outline" data-toggle="tooltip" rel="tooltip"
        title="{{_('Show record')}}">
         <span class="sr-only">{{ _('Show') }}</span>
         <i class="fa fa-search"></i>
@@ -405,9 +405,10 @@
     <a
         id="btn-delete-{{ my_href }}"
         href="#"
-        class="btn btn-light confirm"
+        class="btn btn-secondary-outline confirm"
         rel="tooltip"
         title="{{_('Delete record')}}"
+        type="button"
     >
         <span class="sr-only">{{ _('Delete') }}</span>
         <i class="fa fa-trash"></i>
