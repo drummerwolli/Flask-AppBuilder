@@ -20,9 +20,7 @@
                         <div class="mb-3">
                             <label for="username">{{_("Username")}}:</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <div class="input-group-text"><i class="fa fa-user"></i></div>
-                                </div>
+                                <div class="input-group-text"><i class="fa fa-user"></i></div>
                                 {{ form.username(class = "form-control", autofocus = true) }}
                             </div>
                             {% for error in form.errors.get('openid', []) %}
@@ -33,9 +31,7 @@
                             <label for="password">{{_("Password")}}:</label>
 
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <div class="input-group-text"><i class="fa fa-key"></i></div>
-                                </div>
+                                <div class="input-group-text"><i class="fa fa-key"></i></div>
                                 {{ form.password(size = 80, class = "form-control") }}
                             </div>
                             {% for error in form.errors.get('openid', []) %}
