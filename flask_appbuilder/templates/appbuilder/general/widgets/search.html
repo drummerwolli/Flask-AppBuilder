@@ -3,21 +3,19 @@
 
 <form id="filter_form" class="form-search" method="get">
 
-    <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         {{_("Add Filter")}}
-      <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
+        <div class="dropdown-menu">
             {% for col in include_cols %}
-            <li><a href="#" name="{{col}}" class="filter">
+            <a href="#" name="{{col}}" class="filter dropdown-item">
                 {{ label_columns[col] }}</a>
-            </li>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 
-    <table class="table table-responsive table-hover filters">
+    <table class="table table-sm table-responsive table-hover filters">
         <tbody>
 
         </tbody>

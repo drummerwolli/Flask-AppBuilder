@@ -50,3 +50,14 @@ select {
 .fa-black {
     color: black;
 }
+
+.bi {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.125em;
+    fill: currentcolor
+}
+
+.active .bi {
+    display: block !important;
+}

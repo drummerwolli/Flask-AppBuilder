@@ -7,7 +7,7 @@
 {% set can_delete = "can_delete" | is_item_visible(modelview_name) %}
 {% set actions = actions | get_actions_on_list(modelview_name) %}
 
-<div class="well well-sm">
+<div>
     {% block list_header scoped %}
         {{ lib.render_list_header(can_add, page, page_size, count, filters, actions, modelview_name) }}
     {% endblock %}
