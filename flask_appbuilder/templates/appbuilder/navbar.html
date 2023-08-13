@@ -4,33 +4,29 @@
 {% set menu = appbuilder.menu %}
 {% set languages = appbuilder.languages %}
 
-<div class="navbar {{menu.extra_classes}}" role="navigation">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg mb-4 {{menu.extra_classes}}" role="navigation">
    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            {% if appbuilder.app_icon %}
-                <a class="navbar-brand" href="{{appbuilder.get_url_for_index}}">
-                <img src="{{appbuilder.app_icon}}" height="100%" width="auto">
-                </a>
-            {% else %}
+        {% if appbuilder.app_icon %}
+            <a class="navbar-brand" href="{{appbuilder.get_url_for_index}}">
+            <img src="{{appbuilder.app_icon}}" height="100%" width="auto">
+            </a>
+        {% else %}
                 <span class="navbar-brand">
                 <a href="{{appbuilder.get_url_for_index}}">
                 {{ appbuilder.app_name }}
                 </a>
                 </span>
-            {% endif %}                
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
                 {% include 'appbuilder/navbar_menu.html' %}
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar-nav">
                 {% include 'appbuilder/navbar_right.html' %}
             </ul>
         </div>
    </div>
-</div>
+</nav>
